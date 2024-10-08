@@ -75,7 +75,7 @@ export default defineComponent({
       selectedItem: 0,
       items: [
         { text: 'Dashboard', icon: 'mdi-home', route: '/' },
-        { text: 'Administração', icon: 'mdi-cash-multiple', route: '/admnistracao' },
+        { text: 'Administração', icon: 'mdi-cash-multiple', route: '/administracao' },
       ],
     };
   },
