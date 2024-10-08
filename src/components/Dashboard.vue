@@ -156,12 +156,12 @@
                   Distribuição de Gastos
                 </v-card-title>
                 <v-card :elevation="0">
-                  <v-card-text style="height: 200px;">
+                  <v-card-text style="height: 270px;">
                     <v-chart-pie
                       :data="pieChartData"
                       :options="pieChartOptions"
-                      :height="200"
-                      :width="200"
+                      :height="210"
+                      :width="210"
                     />
                   </v-card-text>
                 </v-card>
