@@ -12,18 +12,35 @@
                 </v-card>
               </v-col>
               <v-col cols="6">
-                <v-card>
-                  Aqui vai pessoas cadastradas pelo dono da conta!
+                <v-card max-height="10vh" class="d-flex justify-end align-center elevation-0">
+                  <v-select
+                    v-model="valueSelect"
+                    :items="items"
+                    label="Cadastrados"
+                    multiple
+                  >
+                    <template v-slot:selection="{ item, index }">
+                      <v-chip v-if="index === 0">
+                        <span>{{ item }}</span>
+                      </v-chip>
+                      <span
+                        v-if="index === 1"
+                        class="grey--text text-caption"
+                      >
+                        (+{{ valueSelect.length - 1 }} Pessoas)
+                      </span>
+                    </template>
+                  </v-select>
                 </v-card>
               </v-col>
             </v-row>
             <v-row>
-              <v-col cols="6">
-                <v-card class="my-5 elevation-0" height="80% d-flex justify-center align-center">
-                  <v-chart :data="chartData" :options="chartOptions" />
+              <v-col cols="7">
+                <v-card class="mx-0 px-0 elevation-0 d-flex justify-start align-center" max-height="16vh">
+                  <v-chart :data="chartData" :options="chartOptions" max-width="100%" />
                 </v-card>
               </v-col>
-              <v-col cols="6" class="d-flex justify-center align-center">
+              <v-col cols="5" class="d-flex justify-center align-center" max-height="16vh">
                 <v-card :elevation="0" class="d-flex justify-center">
                   <v-card-title>
                     Orçamento
@@ -46,7 +63,7 @@
                   <v-list subheader two-line>
                     <v-subheader class="black--text"><h2>Hoje</h2></v-subheader>
 
-                    <v-card class="elevation-0 overflow-auto" max-height="200px">
+                    <v-card class="elevation-0 overflow-auto" max-height="19vh">
                       <v-list-item v-for="folder in folders" :key="folder.title">
                         <v-list-item-avatar>
                           <v-icon
@@ -75,7 +92,7 @@
 
                     <v-subheader class="black--text"><h2>Data completa</h2></v-subheader>
 
-                    <v-card class="elevation-0 overflow-auto" max-height="150px ">
+                    <v-card class="elevation-0 overflow-auto" max-height="19vh">
                       <v-list-item v-for="file in files" :key="file.title">
                         <v-list-item-avatar>
                           <v-icon :class="file.color" dark v-text="file.icon"></v-icon>
@@ -101,14 +118,14 @@
           </v-card>
         </v-col>
         <v-col cols="5">
-          <v-card width="90%" class="my-13 elevation-0">
+          <v-card width="90%" class="my-16 elevation-0">
             <v-row>
               <v-col cols="12">
-                <v-card class="elevation-0" max-height="50%">
+                <v-card class="elevation-0">
                   <v-list subheader two-line>
                     <v-subheader class="black--text"><h2>Gastos totais</h2></v-subheader>
 
-                    <v-card class="elevation-0">
+                    <v-card class="elevation-0 overflow-auto" max-height="40vh">
                       <v-list-item v-for="folder in folders" :key="folder.title">
 
                         <v-list-item-content>
@@ -199,9 +216,19 @@ export default Vue.extend({
           subtitle: 'Jan 28, 2014',
           title: 'Docs',
         },
+        {
+          subtitle: 'Jan 28, 2014',
+          title: 'Docs',
+        },
+        {
+          subtitle: 'Jan 28, 2014',
+          title: 'Docs',
+        },
       ],
       interval: {},
       value: 0,
+      items: ['Alex', 'Núbia', 'Arimar', 'João', 'Artur', 'Victor'],
+      valueSelect: ['Alex'],
   }),
 
   mounted () {
@@ -273,3 +300,9 @@ export default Vue.extend({
   },
 });
 </script>
+
+<style>
+.border-avatar {
+  border: 2px solid gray;
+}
+</style>
